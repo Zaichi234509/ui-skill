@@ -9,9 +9,9 @@
   --text: #fff2e4;
   --muted: #bca89c;
   --dim: #806d64;
-  --red: #cf5b51;
-  --red-dark: #7d2f2a;
-  --red-glow: rgba(223, 84, 72, 0.35);
+  --red: #d5382f;
+  --red-dark: #8c241d;
+  --red-glow: rgba(213, 56, 47, 0.35);
   --cream: #f8ead8;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.56);
   --radius: 18px;
@@ -248,10 +248,10 @@ input { font: inherit; }
   width: 43px;
   height: 35px;
   color: #2a1512;
-  background: #fae3cc;
-  border-radius: 48% 48% 43% 43%;
+  background: #fff;
+  border-radius: 50% 50% 40% 40%;
   font-size: 20px;
-  box-shadow: inset 0 -3px 0 rgba(100, 46, 37, 0.16), 0 0 20px rgba(255, 208, 171, 0.18);
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.2);
   transform: rotate(-6deg);
 }
 
@@ -406,10 +406,10 @@ input { font: inherit; }
 .hero-art {
   position: absolute;
   inset: 0;
-  background-image: url("assets/hero-puca.png");
+  background-image: url("assets/hero-hutao.png");
   background-size: cover;
   background-position: center right;
-  filter: saturate(0.83) contrast(1.08) brightness(0.72) sepia(0.18);
+  filter: saturate(0.9) contrast(1.05) brightness(0.8);
   transform: scale(1.02);
 }
 
