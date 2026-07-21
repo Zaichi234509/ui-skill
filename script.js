@@ -1,18 +1,51 @@
 const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelectorAll('.top-nav a, .side-rail nav a');
+const topNav = document.querySelector('.top-nav');
+
+const closeMenu = () => {
+  document.body.classList.remove('nav-open');
+  navToggle?.setAttribute('aria-expanded', 'false');
+  navToggle?.setAttribute('aria-label', 'Open menu');
+};
+
+const openMenu = () => {
+  document.body.classList.add('nav-open');
+  navToggle?.setAttribute('aria-expanded', 'true');
+  navToggle?.setAttribute('aria-label', 'Close menu');
+};
 
 navToggle?.addEventListener('click', () => {
-  const isOpen = document.body.classList.toggle('nav-open');
-  navToggle.setAttribute('aria-expanded', String(isOpen));
-  navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  const isOpen = document.body.classList.contains('nav-open');
+  if (isOpen) closeMenu();
+  else openMenu();
 });
 
 document.querySelectorAll('.top-nav a').forEach((link) => {
-  link.addEventListener('click', () => {
-    document.body.classList.remove('nav-open');
-    navToggle?.setAttribute('aria-expanded', 'false');
-    navToggle?.setAttribute('aria-label', 'Open menu');
-  });
+  link.addEventListener('click', closeMenu);
+});
+
+// Close when clicking outside nav on mobile
+document.addEventListener('click', (e) => {
+  if (!document.body.classList.contains('nav-open')) return;
+  const isNav = e.target.closest('.top-nav');
+  const isToggle = e.target.closest('.nav-toggle');
+  if (!isNav && !isToggle) closeMenu();
+});
+
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeMenu();
+});
+
+// Auto close when resizing to laptop+ where hamburger is hidden
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    if (window.innerWidth >= 768) {
+      // on tablet+ the nav is static; remove overlay state
+      if (window.innerWidth >= 1024) closeMenu();
+    }
+  }, 150);
 });
 
 const animated = document.querySelectorAll('[data-animate]');
@@ -49,3 +82,9 @@ const setActiveRail = () => {
 
 window.addEventListener('scroll', setActiveRail, { passive: true });
 setActiveRail();
+
+// Responsive image handling safeguard
+document.querySelectorAll('img').forEach((img) => {
+  img.loading = img.loading || 'lazy';
+  img.style.maxWidth = '100%';
+});
