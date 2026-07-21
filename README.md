@@ -1,6 +1,6 @@
-# PUCA Collab Coffee Shop Landing Page
+# HU TAO Collab Coffee Shop Landing Page
 
-A pixel-focused, production-ready static recreation of the provided **PUCA Collab Coffee Shop** design. The page uses semantic HTML, modern CSS, responsive layouts, tasteful hover states, and reveal-on-scroll animations to match the dark, warm, anime-inspired café aesthetic.
+A pixel-focused, production-ready static recreation of a **HU TAO Collab Coffee Shop** design. The page uses semantic HTML, modern CSS, responsive layouts, tasteful hover states, and reveal-on-scroll animations to match the dark, warm, anime-inspired café aesthetic.
 
 ## Preview
 
