@@ -15,8 +15,39 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="animations.css" />
   </head>
   <body>
+    <!-- Cinematic Preloader -->
+    <div class="loader" id="loader" aria-label="Loading">
+      <div class="loader-inner">
+        <div class="loader-logo-wrap">
+          <span class="loader-ring"></span>
+          <span class="loader-ghost">👻</span>
+        </div>
+        <div class="loader-bar-track">
+          <div class="loader-bar-fill"></div>
+        </div>
+        <div class="loader-text"><span class="loader-text-inner">Brews from the Afterlife.</span></div>
+      </div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" aria-hidden="true" id="scrollProgress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="cursor-label" id="cursorLabel" aria-hidden="true"></div>
+    <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
+    <!-- Noise Texture -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- Enhanced Background Particles -->
+    <div class="gradient-orb orb-1" aria-hidden="true"></div>
+    <div class="gradient-orb orb-2" aria-hidden="true"></div>
+
     <div class="ambient ambient-one" aria-hidden="true"></div>
     <div class="ambient ambient-two" aria-hidden="true"></div>
 
@@ -36,7 +67,7 @@
       </div>
     </aside>
 
-    <header class="site-header" data-animate>
+    <header class="site-header gpu-layer" data-entrance="fade-up" data-tilt data-stagger>
       <a class="brand" href="#home" aria-label="HU TAO Collab Coffee Shop home">
         <span class="brand-word">HU TAO</span>
         <span class="cat-face" aria-hidden="true">👻</span>
@@ -49,18 +80,18 @@
 
       <nav class="top-nav" aria-label="Primary navigation">
         <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#merch">Collab Merch</a>
-        <a href="#events">Events</a>
-        <a href="#about">About</a>
-        <a href="#find-us">Find Us</a>
+        <a class="link-slide" href="#menu">Menu</a>
+        <a class="link-slide" href="#merch">Collab Merch</a>
+        <a class="link-slide" href="#events">Events</a>
+        <a class="link-slide" href="#about">About</a>
+        <a class="link-slide" href="#find-us">Find Us</a>
       </nav>
 
       <a class="order-button" href="#order">☕ Order Online</a>
     </header>
 
     <main class="page-shell">
-      <section id="home" class="hero panel" data-animate>
+      <section id="home" class="hero panel interactive-spotlight" data-entrance="fade-in" data-stagger>
         <div class="hero-art" aria-hidden="true"></div>
         <div class="hero-content">
           <p class="eyebrow">Limited Collab Café</p>
@@ -76,13 +107,13 @@
         </div>
       </section>
 
-      <section class="notice panel" aria-label="Limited-time collaboration" data-animate>
+      <section class="notice panel" aria-label="Limited-time collaboration" data-entrance="slide-left" data-stagger>
         <strong>Limited Time Collab!</strong>
         <span>Exclusive drinks, merch, and in-store events.</span>
         <time datetime="2026-07-21">✿ July 21 – Sept 30, 2026</time>
       </section>
 
-      <section id="menu" class="signature panel" data-animate>
+      <section id="menu" class="signature panel" data-entrance="scale-in" data-stagger>
         <div class="section-intro">
           <h2>Signature <span>Drinks ✿</span></h2>
           <i aria-hidden="true"></i>
@@ -91,7 +122,7 @@
         </div>
 
         <div class="drink-grid">
-          <article class="drink-card" data-animate>
+          <article class="drink-card card-glow interactive-spotlight img-zoom" data-entrance="fade-up" data-tilt>
             <span class="tag">New</span>
             <img src="assets/drink-plum.png" alt="Plum Blossom Latte with whipped cream and strawberry drizzle" />
             <div class="card-body">
@@ -100,7 +131,7 @@
               <strong>₱185</strong>
             </div>
           </article>
-          <article class="drink-card featured" data-animate>
+          <article class="drink-card featured card-glow interactive-spotlight img-zoom" data-entrance="fade-up" data-tilt>
             <span class="tag">Best Seller</span>
             <img src="assets/drink-afterlife.png" alt="Hu Tao's Crimson Afterlife Mocha in a clear cup" />
             <div class="card-body">
@@ -109,7 +140,7 @@
               <strong>₱195</strong>
             </div>
           </article>
-          <article class="drink-card" data-animate>
+          <article class="drink-card card-glow interactive-spotlight img-zoom" data-entrance="fade-up" data-tilt>
             <span class="tag">New</span>
             <img src="assets/drink-ghost.png" alt="Ghostly Cocoa topped with a cute ghost marshmallow" />
             <div class="card-body">
@@ -122,7 +153,7 @@
       </section>
 
       <section class="feature-grid" aria-label="Collaboration highlights">
-        <article id="merch" class="feature-card panel" data-animate>
+        <article id="merch" class="feature-card panel card-glow interactive-spotlight" data-entrance="slide-left" data-tilt>
           <img src="assets/merch-hutao.png" alt="HU TAO collaboration tote bag, charms, and postcards" />
           <div>
             <h2>Collab <br />Merch</h2>
@@ -130,7 +161,7 @@
             <a class="btn btn-primary btn-small" href="#order">Shop Now <span>□</span></a>
           </div>
         </article>
-        <article id="events" class="feature-card panel" data-animate>
+        <article id="events" class="feature-card panel card-glow interactive-spotlight" data-entrance="fade-up" data-tilt>
           <img src="assets/events-hutao.png" alt="Cafe event board with warm lighting" />
           <div>
             <h2>Events &amp; <br />Activities</h2>
@@ -138,7 +169,7 @@
             <a class="btn btn-primary btn-small" href="#order">See Events <span>▦</span></a>
           </div>
         </article>
-        <article id="about" class="feature-card panel" data-animate>
+        <article id="about" class="feature-card panel card-glow interactive-spotlight" data-entrance="slide-right" data-tilt>
           <img src="assets/story-hutao.png" alt="A warm cafe table with a thank-you note and Hu Tao-inspired keepsakes" />
           <div>
             <h2>Our <br />Story</h2>
@@ -148,7 +179,7 @@
         </article>
       </section>
 
-      <section id="find-us" class="find panel" data-animate>
+      <section id="find-us" class="find panel interactive-spotlight" data-entrance="rotate-in" data-stagger>
         <div class="find-copy">
           <h2>Find Us <span>✿</span></h2>
           <address>77 Wangsheng Way, Liyue Harbor<br />Brew District, LI 777</address>
@@ -181,21 +212,21 @@
       </div>
       <nav aria-label="Shop links">
         <h3>Shop</h3>
-        <a href="#menu">Menu</a>
-        <a href="#merch">Merch</a>
-        <a href="#order">Order Online</a>
+        <a class="link-slide" href="#menu">Menu</a>
+        <a class="link-slide" href="#merch">Merch</a>
+        <a class="link-slide" href="#order">Order Online</a>
       </nav>
       <nav aria-label="Information links">
         <h3>Info</h3>
-        <a href="#events">Events</a>
-        <a href="#about">About Us</a>
-        <a href="#faq">FAQ</a>
+        <a class="link-slide" href="#events">Events</a>
+        <a class="link-slide" href="#about">About Us</a>
+        <a class="link-slide" href="#faq">FAQ</a>
       </nav>
       <nav aria-label="Support links">
         <h3>Support</h3>
-        <a href="#contact">Contact Us</a>
-        <a href="#terms">Terms &amp; Conditions</a>
-        <a href="#privacy">Privacy Policy</a>
+        <a class="link-slide" href="#contact">Contact Us</a>
+        <a class="link-slide" href="#terms">Terms &amp; Conditions</a>
+        <a class="link-slide" href="#privacy">Privacy Policy</a>
       </nav>
       <div class="newsletter">
         <h3>Follow Us</h3>
